@@ -9,11 +9,18 @@ const PRODUCTS_PER_PAGE = 6;
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(products.length/PRODUCTS_PER_PAGE);
-  
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filterdProducts = products.filter((product) => 
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    product.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filterdProducts.length/PRODUCTS_PER_PAGE);
+
   const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
   const end = start + PRODUCTS_PER_PAGE;
-  const currentProducts = products.slice(start, end);
+  const currentProducts = filterdProducts.slice(start, end);
 
   const visiblePages = 5;
   const getVisiblePageNumbers = () => {
@@ -41,6 +48,18 @@ export default function Home() {
             Shop Now
           </button>
         </Link>
+        <div className='mt-6 max-w-md mx-auto'>
+          <input 
+            type="text"
+            placeholder='Search for jewelry...'
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setCurrentPage(1);
+            }}
+            className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500' 
+          />
+        </div>
       </section>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
