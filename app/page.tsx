@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen px-6 py-10 bg-white text-gray-800">
-      <section className="text-center mb-16">
+      <section className="text-center">
         <h1 className="text-4xl md:text-6xl font-bold text-yellow-600 mb-4">
           Welcome to Golden Hands Jewelry ✨
         </h1>
@@ -61,7 +61,39 @@ export default function Home() {
           />
         </div>
       </section>
+      <div className='mt-6 mb-6 flex justify-center space-x-2'>
+        {currentPage > 1 && (
+          <button
+            className="px-3 py-1 rounded bg-gray-200 text-gray-800"
+            onClick={() => setCurrentPage((prev) => Math.max(prev -1, 1))}
+          >
+            «
+          </button>
+        )}
+        {getVisiblePageNumbers().map((page) => (
+          <button
+            key={page}
+            className={`px-3 py-1 rounded 
+              transition-all duration-500 ease-in-out 
+              ${ page === currentPage 
+              ? 'bg-yellow-600 text-white' 
+              : 'bg-gray-200 text-gray-800'
+            }`}
+            onClick={() => setCurrentPage(page)}
+          >
+            {page}
+          </button>
+        ))}
 
+        {currentPage < totalPages && (
+          <button
+            className='px-3 py-1 rounded bg-gray-200 text-gray-800'
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          >
+             »
+          </button>
+        )}
+      </div>
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {currentProducts.map((product) => (
           <div
