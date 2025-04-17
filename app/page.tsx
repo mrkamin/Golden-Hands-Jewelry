@@ -2,24 +2,44 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { products } from '@/data/data';
 
-const PRODUCTS_PER_PAGE = 6;
+
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const [productPerPage, setProductPerPage] = useState(10);
+
+  useEffect(() => {
+    const updateProductPerPage = () => {
+     const width = window.innerWidth;
+
+      if (width >= 1280) {
+        setProductPerPage(15);
+      } else if (width >= 1024) {
+      setProductPerPage(12)
+    } else if (width >= 768) {
+      setProductPerPage(9)
+    } else {
+      setProductPerPage(6)
+    }
+    };
+    updateProductPerPage();
+    window.addEventListener('resize', updateProductPerPage);
+    return () => window.removeEventListener('resize', updateProductPerPage);
+  }, [])
 
   const filterdProducts = products.filter((product) => 
     product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
     product.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const totalPages = Math.ceil(filterdProducts.length/PRODUCTS_PER_PAGE);
+  const totalPages = Math.ceil(filterdProducts.length/productPerPage);
 
-  const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
-  const end = start + PRODUCTS_PER_PAGE;
+  const start = (currentPage - 1) * productPerPage;
+  const end = start + productPerPage;
   const currentProducts = filterdProducts.slice(start, end);
 
   const visiblePages = 5;
@@ -73,7 +93,7 @@ export default function Home() {
         {getVisiblePageNumbers().map((page) => (
           <button
             key={page}
-            className={`px-3 py-1 rounded 
+            className={`px-3 py-1 rounded corsur-pointer
               transition-all duration-500 ease-in-out 
               ${ page === currentPage 
               ? 'bg-yellow-600 text-white' 
@@ -94,7 +114,7 @@ export default function Home() {
           </button>
         )}
       </div>
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
         {currentProducts.map((product) => (
           <div
             key={product.id}
