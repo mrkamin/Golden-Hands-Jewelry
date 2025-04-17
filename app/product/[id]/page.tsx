@@ -1,8 +1,23 @@
 import { products } from "@/data/data";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
 
-export default function ProductDetail({params}: {params: {id: string}}) {
+type ProductPageProps = {
+    params: {
+        id:string;
+    };
+};
+
+export async function generateMetadata({params}: ProductPageProps): Promise<Metadata> {
+    const product = products.find((p) => p.id === params.id);
+    return {
+        title: product?.name || 'Product Not found',
+        description: product?.description || '',
+    };
+}
+
+export default function ProductDetail({params}: ProductPageProps) {
     const product = products.find((p) => p.id === params.id);
     
     if (!product) {
