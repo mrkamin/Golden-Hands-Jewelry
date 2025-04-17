@@ -79,7 +79,7 @@ export default function ProductDetail({params}: ProductPageProps) {
                 <div className="text-gray-600 mt-2">⭐️⭐️⭐️⭐️⭐️ - Absolutely love it! Fast shipping too.</div>
             </div>
             <div className="mt-16">
-                <h2 text-2xl font-semibold mb-4 text-gray-800>Related Products</h2>
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">Related Products</h2>
                 <div className="grid md:grid-cols-3 gap-6">
                     {relatedProducts.length === 0 ? (
                         <p className="text-gray-500">No related products found.</p>
