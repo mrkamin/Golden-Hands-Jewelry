@@ -8,8 +8,12 @@ type Params = {
   id: string;
 };
 
+interface ProductPageProps {
+    params: Params;
+}
+
 // Metadata generation
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const product = products.find((p) => p.id === params.id);
   return {
     title: product?.name || "Product Not Found",
@@ -18,7 +22,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 // Page component
-export default function ProductDetail({ params }: { params: Params }) {
+export default function ProductDetail({ params }: ProductPageProps) {
   const product = products.find((p) => p.id === params.id);
 
   if (!product) {
