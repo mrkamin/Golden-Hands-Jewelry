@@ -3,14 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 
-type Props = {
-    params: {
+type Params = {
         id:string;
-    };
 };
 
 export async function generateMetadata(
-    {params}: Props): Promise<Metadata> {
+    {params}: {params: Params}): Promise<Metadata> {
     const product = products.find((p) => p.id === params.id);
     return {
         title: product?.name || 'Product Not found',
@@ -18,7 +16,7 @@ export async function generateMetadata(
     };
 }
 
-export default function ProductDetail({params}: Props) {
+export default function ProductDetail({params}: {params: Params}) {
     const product = products.find((p) => p.id === params.id);
     
     if (!product) {
