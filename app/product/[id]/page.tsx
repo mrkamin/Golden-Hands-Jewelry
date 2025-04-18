@@ -3,46 +3,66 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 
+// Define the params type
 type Params = {
   id: string;
 };
 
+// Metadata generation
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const product = products.find((p) => p.id === params.id);
   return {
-    title: product?.name || 'Product Not found',
-    description: product?.description || '',
+    title: product?.name || "Product Not Found",
+    description: product?.description || "",
   };
 }
 
+// Page component
 export default function ProductDetail({ params }: { params: Params }) {
   const product = products.find((p) => p.id === params.id);
-  
+
   if (!product) {
-    return <div className="p-10 text-center text-red-500">
-      Product not found.
-    </div>
+    return <div className="p-10 text-center text-red-500">Product not found.</div>;
   }
 
   const stopwords = new Set([
-    'the', 'and', 'with', 'for', 'from', 'this', 'that', 'your', 'you', 'are', 'was', 'to', 'of', 'in', 'on', 'a', 'an', 'is', 'it', 'by', 'at'   
+    "the",
+    "and",
+    "with",
+    "for",
+    "from",
+    "this",
+    "that",
+    "your",
+    "you",
+    "are",
+    "was",
+    "to",
+    "of",
+    "in",
+    "on",
+    "a",
+    "an",
+    "is",
+    "it",
+    "by",
+    "at",
   ]);
 
-  const extractKeyWords = (text: string) => 
+  const extractKeyWords = (text: string) =>
     text
       .toLowerCase()
       .split(/\W+/)
       .filter((word) => word.length > 2 && !stopwords.has(word));
-  
 
-  const productKeyWords = extractKeyWords(product.name + ' ' + product.description);
+  const productKeyWords = extractKeyWords(product.name + " " + product.description);
 
   const relatedProducts = products
     .filter((p) => p.id !== params.id)
     .map((p) => {
-      const keywords = extractKeyWords(p.name + ' ' + p.description);
+      const keywords = extractKeyWords(p.name + " " + p.description);
       const matchCount = keywords.filter((word) => productKeyWords.includes(word)).length;
-      return {...p, matchCount};
+      return { ...p, matchCount };
     })
     .filter((p) => p.matchCount > 0)
     .sort((a, b) => b.matchCount - a.matchCount)
