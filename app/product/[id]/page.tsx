@@ -3,8 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 
+
+interface PageProps {
+    params: {
+      id: string;
+    };
+  } 
+
 export async function generateMetadata(
-    { params }: { params: { id: string } }
+    { params }: PageProps
   ): Promise<Metadata> {
     const product = products.find((p) => p.id === params.id);
     return {
@@ -15,10 +22,8 @@ export async function generateMetadata(
 
 // Page component
 export default function ProductDetail({
-    params, 
-}:{
-    params: { id: string };
-}) { 
+    params
+}: PageProps) { 
     const product = products.find((p) => p.id === params.id);
 
   if (!product) {
