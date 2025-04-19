@@ -22,9 +22,15 @@ export default function CheckoutPage() {
             <div key={item.id} className="flex justify-between items-center border-b pb-2">
               <div>
                 <h2 className="font-semibold text-yellow-800">{item.name}</h2>
-                <p>{item.quantity} × ${item.price}</p>
+                <p>{item.quantity} × {item.price}</p>
               </div>
-              <p>${(parseFloat(item.price) * item.quantity).toFixed(2)}</p>
+              <p>
+  $
+  {(
+    parseFloat(item.price.toString().replace(/[^0-9.]/g, "")) * item.quantity
+  ).toFixed(2)}
+</p>
+
             </div>
           ))}
 
