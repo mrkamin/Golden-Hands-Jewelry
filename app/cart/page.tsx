@@ -28,7 +28,7 @@ export default function CartPage() {
                 <Image src={item.image} alt={item.name} width={80} height={80} />
                 <div>
                   <h2 className="font-semibold text-yellow-800">{item.name}</h2>
-                  <p>{item.quantity} × ${item.price}</p>
+                  <p>{item.quantity} × {item.price}</p>
                 </div>
               </div>
               <button onClick={() => removeFromCart(item.id)} className="text-red-500 hover:underline">

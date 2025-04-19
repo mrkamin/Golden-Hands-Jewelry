@@ -68,7 +68,6 @@ export default function ProductDetailClient({ product, allProducts }: Props) {
           <p className="text-yellow-800 text-xl font-semibold mb-6">
             {product.price}
           </p>
-          <Link href="/cart">
           <button
             className="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded"
             onClick={() => { 
@@ -85,7 +84,6 @@ export default function ProductDetailClient({ product, allProducts }: Props) {
           >
             Add to cart
           </button>
-          </Link>
         </div>
       </div>
        {/* Customer Reviews */}
