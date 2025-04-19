@@ -3,27 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 
-// Define the params type
-type Params = {
-  id: string;
-};
-
-interface ProductPageProps {
-    params: Params;
-}
-
-// Metadata generation
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = products.find((p) => p.id === params.id);
-  return {
-    title: product?.name || "Product Not Found",
-    description: product?.description || "",
-  };
-}
+export async function generateMetadata(
+    { params }: { params: { id: string } }
+  ): Promise<Metadata> {
+    const product = products.find((p) => p.id === params.id);
+    return {
+      title: product?.name || "Product Not Found",
+      description: product?.description || "",
+    };
+  }
 
 // Page component
-export default function ProductDetail({ params }: ProductPageProps) {
-  const product = products.find((p) => p.id === params.id);
+export default function ProductDetail({
+    params, 
+}:{
+    params: { id: string };
+}) { 
+    const product = products.find((p) => p.id === params.id);
 
   if (!product) {
     return <div className="p-10 text-center text-red-500">Product not found.</div>;
