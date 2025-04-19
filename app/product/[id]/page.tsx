@@ -9,6 +9,13 @@ interface PageProps {
       id: string;
     };
   } 
+  
+  
+export async function generateStaticParams() {
+    return products.map((product) => ({
+      params: { id: product.id },
+    }));
+  }
 
 export async function generateMetadata(
     { params }: PageProps
@@ -21,9 +28,7 @@ export async function generateMetadata(
   }
 
 // Page component
-export default function ProductDetail({
-    params
-}: PageProps) { 
+export default function ProductDetail( { params }: PageProps) { 
     const product = products.find((p) => p.id === params.id);
 
   if (!product) {
