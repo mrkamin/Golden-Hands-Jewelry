@@ -2,24 +2,44 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { products } from '@/data/data';
 
-const PRODUCTS_PER_PAGE = 6;
+
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const [productPerPage, setProductPerPage] = useState(10);
+
+  useEffect(() => {
+    const updateProductPerPage = () => {
+     const width = window.innerWidth;
+
+      if (width >= 1280) {
+        setProductPerPage(15);
+      } else if (width >= 1024) {
+      setProductPerPage(12)
+    } else if (width >= 768) {
+      setProductPerPage(9)
+    } else {
+      setProductPerPage(6)
+    }
+    };
+    updateProductPerPage();
+    window.addEventListener('resize', updateProductPerPage);
+    return () => window.removeEventListener('resize', updateProductPerPage);
+  }, [])
 
   const filterdProducts = products.filter((product) => 
     product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
     product.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const totalPages = Math.ceil(filterdProducts.length/PRODUCTS_PER_PAGE);
+  const totalPages = Math.ceil(filterdProducts.length/productPerPage);
 
-  const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
-  const end = start + PRODUCTS_PER_PAGE;
+  const start = (currentPage - 1) * productPerPage;
+  const end = start + productPerPage;
   const currentProducts = filterdProducts.slice(start, end);
 
   const visiblePages = 5;
@@ -36,7 +56,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen px-6 py-10 bg-white text-gray-800">
-      <section className="text-center mb-16">
+      <section className="text-center">
         <h1 className="text-4xl md:text-6xl font-bold text-yellow-600 mb-4">
           Welcome to Golden Hands Jewelry ✨
         </h1>
@@ -61,8 +81,40 @@ export default function Home() {
           />
         </div>
       </section>
+      <div className='mt-6 mb-6 flex justify-center space-x-2'>
+        {currentPage > 1 && (
+          <button
+            className="px-3 py-1 rounded bg-gray-200 text-gray-800"
+            onClick={() => setCurrentPage((prev) => Math.max(prev -1, 1))}
+          >
+            «
+          </button>
+        )}
+        {getVisiblePageNumbers().map((page) => (
+          <button
+            key={page}
+            className={`px-3 py-1 rounded corsur-pointer
+              transition-all duration-500 ease-in-out 
+              ${ page === currentPage 
+              ? 'bg-yellow-600 text-white' 
+              : 'bg-gray-200 text-gray-800'
+            }`}
+            onClick={() => setCurrentPage(page)}
+          >
+            {page}
+          </button>
+        ))}
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {currentPage < totalPages && (
+          <button
+            className='px-3 py-1 rounded bg-gray-200 text-gray-800'
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          >
+             »
+          </button>
+        )}
+      </div>
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
         {currentProducts.map((product) => (
           <div
             key={product.id}
