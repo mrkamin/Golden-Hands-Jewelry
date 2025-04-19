@@ -7,7 +7,12 @@ import Link from "next/link";
 export default function CartPage() {
   const { cart, removeFromCart, clearCart } = useCart();
 
-  const total = cart.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0);
+  const total = cart.reduce((sum, item) => {
+    const numericPrice = parseFloat(item.price.toString().replace(/[^0-9.]/g, ""));
+    return sum + numericPrice * item.quantity;
+  }, 0);
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <div className="p-8 max-w-4xl mx-auto">
@@ -31,9 +36,14 @@ export default function CartPage() {
               </button>
             </div>
           ))}
-          <div className="mt-6 text-lg font-bold text-gray-800">Total: ${total.toFixed(2)}</div>
-          <div className="mt-4 flex gap-4">
-            <button onClick={clearCart} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+         <div className="mt-6 text-lg font-bold text-gray-800">
+            Total Items: {totalItems}
+          </div>
+          <div className="text-lg font-bold text-gray-800">
+            Total Price: ${total.toFixed(2)}
+          </div>
+          <div className="mt-4 flex flex-col sm:flex-row gap-4">
+            <button onClick={clearCart} className="px-4 py-2 bg-red-500 w-fit text-white rounded hover:bg-red-600">
               Clear Cart
             </button>
             <Link href="/checkout">
@@ -42,6 +52,13 @@ export default function CartPage() {
               </button>
             </Link>
           </div>
+          <div className="mt-10">
+        <Link href="/">
+          <button className="text-yellow-700 hover:underline">
+            ← Back to Home
+          </button>
+        </Link>
+      </div>
         </>
       )}
     </div>
