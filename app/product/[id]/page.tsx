@@ -3,20 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 
+export const dynamicParams = true;
 
-interface PageProps {
+type PageProps = {
     params: {
       id: string;
     };
   } 
   
   
-export async function generateStaticParams() {
+  export async function generateStaticParams() {
     return products.map((product) => ({
-      params: { id: product.id },
+      id: product.id,
     }));
   }
-
 export async function generateMetadata(
     { params }: PageProps
   ): Promise<Metadata> {
