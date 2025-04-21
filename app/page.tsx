@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { products } from '@/data/data';
+import PaginationControl from '@/components/PaginationControl';
 
 
 
@@ -64,7 +65,7 @@ export default function Home() {
           Discover elegant, handmade jewelry crafted with passion and precision. Each piece tells a story—yours.
         </p>
         <Link href="/shop">
-          <button className="mt-6 px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-md">
+          <button className="mt-6 px-6 py-3 bg-yellow-500 hover:bg-yellow-600 cursor-pointer text-white font-semibold rounded-md">
             Shop Now
           </button>
         </Link>
@@ -81,39 +82,12 @@ export default function Home() {
           />
         </div>
       </section>
-      <div className='mt-6 mb-6 flex justify-center space-x-2'>
-        {currentPage > 1 && (
-          <button
-            className="px-3 py-1 rounded bg-gray-200 text-gray-800"
-            onClick={() => setCurrentPage((prev) => Math.max(prev -1, 1))}
-          >
-            «
-          </button>
-        )}
-        {getVisiblePageNumbers().map((page) => (
-          <button
-            key={page}
-            className={`px-3 py-1 rounded corsur-pointer
-              transition-all duration-500 ease-in-out 
-              ${ page === currentPage 
-              ? 'bg-yellow-600 text-white' 
-              : 'bg-gray-200 text-gray-800'
-            }`}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </button>
-        ))}
-
-        {currentPage < totalPages && (
-          <button
-            className='px-3 py-1 rounded bg-gray-200 text-gray-800'
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-          >
-             »
-          </button>
-        )}
-      </div>
+      <PaginationControl 
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+        getVisiblePageNumbers={getVisiblePageNumbers}
+      />
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
         {currentProducts.map((product) => (
           <div
@@ -132,7 +106,7 @@ export default function Home() {
               <p className="text-gray-600 text-sm mt-1">{product.description}</p>
               <p className="text-yellow-800 font-bold mt-2">{product.price}</p>
               <Link href={`/product/${product.id}`}>
-                <button className="mt-3 text-sm px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded">
+                <button className="mt-3 cursor-pointer text-sm px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded">
                   View Details
                 </button>
               </Link>
@@ -140,39 +114,12 @@ export default function Home() {
           </div>
         ))}
       </section>
-      <div className='mt-12 flex justify-center space-x-2'>
-        {currentPage > 1 && (
-          <button
-            className="px-3 py-1 rounded bg-gray-200 text-gray-800"
-            onClick={() => setCurrentPage((prev) => Math.max(prev -1, 1))}
-          >
-            «
-          </button>
-        )}
-        {getVisiblePageNumbers().map((page) => (
-          <button
-            key={page}
-            className={`px-3 py-1 rounded 
-              transition-all duration-500 ease-in-out 
-              ${ page === currentPage 
-              ? 'bg-yellow-600 text-white' 
-              : 'bg-gray-200 text-gray-800'
-            }`}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </button>
-        ))}
-
-        {currentPage < totalPages && (
-          <button
-            className='px-3 py-1 rounded bg-gray-200 text-gray-800'
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-          >
-             »
-          </button>
-        )}
-      </div>
+      <PaginationControl 
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+        getVisiblePageNumbers={getVisiblePageNumbers}
+       />
     </main>
   );
 }
