@@ -1,10 +1,13 @@
-export const products = [
+import { Product } from "@/types/types";
+
+export const products: Product[] = [
   {
     id: '1',
     name: 'Elegant Necklace',
     description: 'Crafted with love and golden touch.',
     price: '$49.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744803739/GHJ/Elegant_Necklace.jpg',
+    popularity: 91,
   },
   {
     id: '2',
@@ -12,6 +15,7 @@ export const products = [
     description: 'Graceful and timeless design with freshwater pearls.',
     price: '$39.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744804879/GHJ/Pearl%20Bracelet.jpg',
+    popularity: 91,
   },
   {
     id: '3',
@@ -19,6 +23,7 @@ export const products = [
     description: 'A vibrant ring featuring handpicked gemstones.',
     price: '$59.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744804880/GHJ/Gemstone%20Ring.jpg',
+    popularity: 91,
   },
   {
     id: '4',
@@ -26,6 +31,7 @@ export const products = [
     description: 'Inspired by the warm hues of golden hour.',
     price: '$29.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744808337/GHJ/Sunset_Earrings.jpg',
+    popularity: 91,
   },
   {
     id: '5',
@@ -33,6 +39,7 @@ export const products = [
     description: 'A free-spirited anklet for bohemian vibes.',
     price: '$24.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744808452/GHJ/boho-anklet.jpg',
+    popularity: 91,
   },
   {
     id: '6',
@@ -40,6 +47,7 @@ export const products = [
     description: 'Timeless brooch to accent any outfit.',
     price: '$34.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744808563/GHJ/classic-brooch.jpg',
+    popularity: 91,
   },
   {
     id: '7',
@@ -47,6 +55,7 @@ export const products = [
     description: 'Handcrafted ring for special moments.',
     price: '$45.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810511/GHJ/elegant-ring.jpg',
+    popularity: 91,
   },
   {
     id: '8',
@@ -54,6 +63,7 @@ export const products = [
     description: 'Simple elegance meets modern design.',
     price: '$42.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810637/GHJ/minimalist-necklace.jpg',
+    popularity: 91,
   },
   {
     id: '9',
@@ -61,6 +71,7 @@ export const products = [
     description: 'A vintage piece full of character.',
     price: '$37.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810782/GHJ/vintage-bangle.jpg',
+    popularity: 91,
   },
   {
     id: '10',
@@ -68,6 +79,7 @@ export const products = [
     description: 'Classic hoops with a modern twist.',
     price: '$32.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811425/GHJ/gold-hoop-earrings.jpg',
+    popularity: 85,
   },
   {
     id: '11',
@@ -75,6 +87,7 @@ export const products = [
     description: 'A pendant that shines with natural crystals.',
     price: '$44.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811519/GHJ/crystal-pendant.jpg',
+    popularity: 85,
   },
   {
     id: '12',
@@ -82,6 +95,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 85,
   },
   {
     id: '13',
@@ -89,6 +103,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 85,
   },
   {
     id: '14',
@@ -96,6 +111,7 @@ export const products = [
     description: 'Classic hoops with a modern twist.',
     price: '$32.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811425/GHJ/gold-hoop-earrings.jpg',
+    popularity: 85,
   },
   {
     id: '15',
@@ -103,6 +119,7 @@ export const products = [
     description: 'A pendant that shines with natural crystals.',
     price: '$44.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811519/GHJ/crystal-pendant.jpg',
+    popularity: 85,
   },
   {
     id: '16',
@@ -110,6 +127,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 85,
   },
   {
     id: '17',
@@ -117,6 +135,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 85,
   },
   {
     id: '18',
@@ -124,6 +143,7 @@ export const products = [
     description: 'Handcrafted ring for special moments.',
     price: '$45.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810511/GHJ/elegant-ring.jpg',
+    popularity: 85,
   },
   {
     id: '19',
@@ -131,6 +151,7 @@ export const products = [
     description: 'Simple elegance meets modern design.',
     price: '$42.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810637/GHJ/minimalist-necklace.jpg',
+    popularity: 85,
   },
   {
     id: '20',
@@ -138,6 +159,7 @@ export const products = [
     description: 'A vintage piece full of character.',
     price: '$37.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810782/GHJ/vintage-bangle.jpg',
+    popularity: 85,
   },
   {
     id: '21',
@@ -145,6 +167,7 @@ export const products = [
     description: 'Classic hoops with a modern twist.',
     price: '$32.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811425/GHJ/gold-hoop-earrings.jpg',
+    popularity: 89,
   },
   {
     id: '22',
@@ -152,6 +175,7 @@ export const products = [
     description: 'A pendant that shines with natural crystals.',
     price: '$44.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811519/GHJ/crystal-pendant.jpg',
+    popularity: 89,
   },
   {
     id: '23',
@@ -159,6 +183,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 89,
   },
   {
     id: '24',
@@ -166,6 +191,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 89,
   },
   {
     id: '25',
@@ -173,6 +199,7 @@ export const products = [
     description: 'Classic hoops with a modern twist.',
     price: '$32.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811425/GHJ/gold-hoop-earrings.jpg',
+    popularity: 89,
   },
   {
     id: '26',
@@ -180,6 +207,7 @@ export const products = [
     description: 'A pendant that shines with natural crystals.',
     price: '$44.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811519/GHJ/crystal-pendant.jpg',
+    popularity: 89,
   },
   {
     id: '27',
@@ -187,6 +215,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 89,
   },
   {
     id: '28',
@@ -194,6 +223,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 89,
   },
   {
     id: '29',
@@ -201,6 +231,7 @@ export const products = [
     description: 'Crafted with love and golden touch.',
     price: '$49.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744803739/GHJ/Elegant_Necklace.jpg',
+    popularity: 89,
   },
   {
     id: '30',
@@ -208,6 +239,7 @@ export const products = [
     description: 'Graceful and timeless design with freshwater pearls.',
     price: '$39.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744804879/GHJ/Pearl%20Bracelet.jpg',
+    popularity: 89,
   },
   {
     id: '31',
@@ -215,6 +247,7 @@ export const products = [
     description: 'A vibrant ring featuring handpicked gemstones.',
     price: '$59.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744804880/GHJ/Gemstone%20Ring.jpg',
+    popularity: 89,
   },
   {
     id: '32',
@@ -222,6 +255,7 @@ export const products = [
     description: 'Inspired by the warm hues of golden hour.',
     price: '$29.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744808337/GHJ/Sunset_Earrings.jpg',
+    popularity: 89,
   },
   {
     id: '33',
@@ -229,6 +263,7 @@ export const products = [
     description: 'A free-spirited anklet for bohemian vibes.',
     price: '$24.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744808452/GHJ/boho-anklet.jpg',
+    popularity: 95,
   },
   {
     id: '34',
@@ -236,6 +271,7 @@ export const products = [
     description: 'Timeless brooch to accent any outfit.',
     price: '$34.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744808563/GHJ/classic-brooch.jpg',
+    popularity: 95,
   },
   {
     id: '35',
@@ -243,6 +279,7 @@ export const products = [
     description: 'Handcrafted ring for special moments.',
     price: '$45.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810511/GHJ/elegant-ring.jpg',
+    popularity: 95,
   },
   {
     id: '36',
@@ -250,6 +287,7 @@ export const products = [
     description: 'Simple elegance meets modern design.',
     price: '$42.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810637/GHJ/minimalist-necklace.jpg',
+    popularity: 95,
   },
   {
     id: '37',
@@ -257,6 +295,7 @@ export const products = [
     description: 'A vintage piece full of character.',
     price: '$37.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810782/GHJ/vintage-bangle.jpg',
+    popularity: 95,
   },
   {
     id: '38',
@@ -264,6 +303,7 @@ export const products = [
     description: 'Classic hoops with a modern twist.',
     price: '$32.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811425/GHJ/gold-hoop-earrings.jpg',
+    popularity: 95,
   },
   {
     id: '39',
@@ -271,6 +311,7 @@ export const products = [
     description: 'A pendant that shines with natural crystals.',
     price: '$44.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811519/GHJ/crystal-pendant.jpg',
+    popularity: 95,
   },
   {
     id: '40',
@@ -278,6 +319,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 95,
   },
   {
     id: '41',
@@ -285,6 +327,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 95,
   },
   {
     id: '42',
@@ -292,6 +335,7 @@ export const products = [
     description: 'Classic hoops with a modern twist.',
     price: '$32.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811425/GHJ/gold-hoop-earrings.jpg',
+    popularity: 95,
   },
   {
     id: '43',
@@ -299,6 +343,7 @@ export const products = [
     description: 'A pendant that shines with natural crystals.',
     price: '$44.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811519/GHJ/crystal-pendant.jpg',
+    popularity: 95,
   },
   {
     id: '44',
@@ -306,6 +351,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 95,
   },
   {
     id: '45',
@@ -313,6 +359,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 87,
   },
   {
     id: '46',
@@ -320,6 +367,7 @@ export const products = [
     description: 'Handcrafted ring for special moments.',
     price: '$45.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810511/GHJ/elegant-ring.jpg',
+    popularity: 87,
   },
   {
     id: '47',
@@ -327,6 +375,7 @@ export const products = [
     description: 'Simple elegance meets modern design.',
     price: '$42.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810637/GHJ/minimalist-necklace.jpg',
+    popularity: 87,
   },
   {
     id: '48',
@@ -334,6 +383,7 @@ export const products = [
     description: 'A vintage piece full of character.',
     price: '$37.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744810782/GHJ/vintage-bangle.jpg',
+    popularity: 87,
   },
   {
     id: '49',
@@ -341,6 +391,7 @@ export const products = [
     description: 'Classic hoops with a modern twist.',
     price: '$32.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811425/GHJ/gold-hoop-earrings.jpg',
+    popularity: 87,
   },
   {
     id: '50',
@@ -348,6 +399,7 @@ export const products = [
     description: 'A pendant that shines with natural crystals.',
     price: '$44.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811519/GHJ/crystal-pendant.jpg',
+    popularity: 87,
   },
   {
     id: '51',
@@ -355,6 +407,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 87,
   },
   {
     id: '52',
@@ -362,6 +415,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 87,
   },
   {
     id: '53',
@@ -369,6 +423,7 @@ export const products = [
     description: 'Classic hoops with a modern twist.',
     price: '$32.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811425/GHJ/gold-hoop-earrings.jpg',
+    popularity: 87,
   },
   {
     id: '54',
@@ -376,6 +431,7 @@ export const products = [
     description: 'A pendant that shines with natural crystals.',
     price: '$44.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811519/GHJ/crystal-pendant.jpg',
+    popularity: 87,
   },
   {
     id: '55',
@@ -383,6 +439,7 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 87,
   },
   {
     id: '56',
@@ -390,5 +447,6 @@ export const products = [
     description: 'A minimalist choker with subtle charm.',
     price: '$27.99',
     image: 'https://res.cloudinary.com/dagjuuf4v/image/upload/v1744811651/GHJ/delicate-choker.jpg',
+    popularity: 99,
   },
 ];
