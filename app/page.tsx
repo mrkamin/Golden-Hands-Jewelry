@@ -6,8 +6,6 @@ import { useEffect, useState } from 'react';
 import { products } from '@/data/data';
 import PaginationControl from '@/components/PaginationControl';
 
-
-
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,29 +13,30 @@ export default function Home() {
 
   useEffect(() => {
     const updateProductPerPage = () => {
-     const width = window.innerWidth;
+      const width = window.innerWidth;
 
       if (width >= 1280) {
         setProductPerPage(15);
       } else if (width >= 1024) {
-      setProductPerPage(12)
-    } else if (width >= 768) {
-      setProductPerPage(9)
-    } else {
-      setProductPerPage(6)
-    }
+        setProductPerPage(12);
+      } else if (width >= 768) {
+        setProductPerPage(9);
+      } else {
+        setProductPerPage(6);
+      }
     };
     updateProductPerPage();
     window.addEventListener('resize', updateProductPerPage);
     return () => window.removeEventListener('resize', updateProductPerPage);
-  }, [])
+  }, []);
 
-  const filterdProducts = products.filter((product) => 
-    product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    product.description.toLowerCase().includes(searchTerm.toLowerCase())
+  const filterdProducts = products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const totalPages = Math.ceil(filterdProducts.length/productPerPage);
+  const totalPages = Math.ceil(filterdProducts.length / productPerPage);
 
   const start = (currentPage - 1) * productPerPage;
   const end = start + productPerPage;
@@ -49,11 +48,10 @@ export default function Home() {
     let end = start + visiblePages - 1;
     if (end > totalPages) {
       end = totalPages;
-      start = Math.max(end -visiblePages + 1, 1);
+      start = Math.max(end - visiblePages + 1, 1);
     }
     return Array.from({ length: end - start + 1 }, (_, i) => start + i);
   };
-  
 
   return (
     <main className="min-h-screen px-6 py-10 bg-white text-gray-800">
@@ -65,24 +63,27 @@ export default function Home() {
           Discover elegant, handmade jewelry crafted with passion and precision. Each piece tells a story—yours.
         </p>
         <Link href="/shop">
-          <button className="mt-6 px-6 py-3 bg-yellow-500 hover:bg-yellow-600 cursor-pointer text-white font-semibold rounded-md">
-            Shop Now
+          <button 
+            className="mt-6 px-6 py-3 bg-yellow-500 hover:bg-yellow-600 cursor-pointer text-white font-semibold rounded-md"
+            aria-label="shop"  
+          >
+              Shop Now
           </button>
         </Link>
-        <div className='mt-6 max-w-md mx-auto'>
-          <input 
+        <div className="mt-6 max-w-md mx-auto">
+          <input
             type="text"
-            placeholder='Search for jewelry...'
+            placeholder="Search for jewelry..."
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
               setCurrentPage(1);
             }}
-            className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500' 
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
         </div>
       </section>
-      <PaginationControl 
+      <PaginationControl
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         totalPages={totalPages}
@@ -106,20 +107,25 @@ export default function Home() {
               <p className="text-gray-600 text-sm mt-1">{product.description}</p>
               <p className="text-yellow-800 font-bold mt-2">{product.price}</p>
               <Link href={`/product/${product.id}`}>
-                <button className="mt-3 cursor-pointer text-sm px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded">
-                  View Details
+                <button 
+                  className="mt-3 cursor-pointer text-sm px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded"
+                  aria-label="view-details"
+                >
+                    View Details
                 </button>
               </Link>
             </div>
           </div>
         ))}
       </section>
-      <PaginationControl 
+      <PaginationControl
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         totalPages={totalPages}
         getVisiblePageNumbers={getVisiblePageNumbers}
-       />
+      />
     </main>
   );
 }
+
+
