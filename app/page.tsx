@@ -139,12 +139,14 @@ export default function Home() {
                 <h3 className="text-xl font-semibold text-yellow-700">{product.name}</h3>
                 <p className="text-gray-600 text-sm mt-1">{product.description}</p>
                 <p className="text-yellow-800 font-bold mt-2">{product.price}</p>
-                <button 
-                  className="mt-3 cursor-pointer text-sm px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded"
-                  onClick={() => setSelectedProduct(product)}
-                >
-                  View Details
-                </button>
+                <Link href={`/product/${product.id}`}>
+                  <button 
+                    className="mt-3 cursor-pointer text-sm px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded"
+                    aria-label="view-details"
+                  >
+                      View Details
+                  </button>
+                </Link>
               </div>
             </div>
           ))
