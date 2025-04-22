@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
@@ -46,8 +47,48 @@ const Header = () => {
         </nav>
 
         {/* Mobile Toggle */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden relative cursor-pointer"
+        >
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div
+                key="close"
+                initial={{ opacity: 0, rotate: -90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 90 }}
+                transition={{ duration: 0.3 }}
+              >
+                <X size={24} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="menu"
+                initial={{ opacity: 0, rotate: 90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: -90 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Menu size={24} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {!isOpen && totalItems > 0 && (
+              <motion.span
+                key="badge"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.5 }}
+                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+              >
+                {totalItems}
+              </motion.span>
+            )}
+          </AnimatePresence>
         </button>
       </div>
 
@@ -59,7 +100,7 @@ const Header = () => {
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-gray-700 hover:text-[#dfaf37] transition"
+              className="text-gray-700 hover:text-[#d4af37] transition"
             >
               {link.name}
             </Link>
@@ -68,10 +109,12 @@ const Header = () => {
           <Link
             href="/cart"
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-2 text-gray-700 hover:text-[#dfaf37]"
+            className="flex items-center gap-2 text-gray-700 hover:text-[#d4af37]"
           >
             <ShoppingCart size={20} />
-            Cart {totalItems > 0 && `(${totalItems})`}
+            Cart {totalItems > 0 && <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            {`(${totalItems})`}
+              </span>}
           </Link>
         </nav>
       )}

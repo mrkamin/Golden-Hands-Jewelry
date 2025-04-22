@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Golden Hands Jewelry | Handmade Jewelry",
   description: "Explore artisan jewelry crafted with love and passion.",
   keywords: ["Handmade Jewelry", "Golden Hands", "Artisan Jewelry", "Ecommerce"],
-  authors: [{name: "Golden HandsJewlry"}],
+  authors: [{name: "Golden Hands Jewlry"}],
 };
 
 export default function RootLayout({
@@ -34,11 +34,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <CartProvider>
           <Header />
-          <main>{children}</main>
+          <main className="flex-grow">{children}</main>
           <Footer />
           <Toaster position="top-right" />
         </CartProvider>
