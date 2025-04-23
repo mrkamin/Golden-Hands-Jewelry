@@ -38,7 +38,8 @@ This app is build with next.js and Redux.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [vercel](*https://ghj-eta.vercel.app/*)
+- <li><a href="https://ghj-eta.vercel.app/">Vercel</a></li>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
